@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// 主题相近的颜色如何处理？
 ///
 /// ```
-/// WcaoTheme.primay.withOpacity(.5);
+/// WcaoTheme.primay.withValues(alpha: .5);
 /// ```
 
 class WcaoTheme {

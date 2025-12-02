@@ -23,7 +23,7 @@ class Tag extends StatelessWidget {
   final EdgeInsets? padding;
 
   /// 颜色
-  /// 背景颜色 color.withOpacity(.46)
+  /// 背景颜色 color.withValues(alpha: .46)
   final Color? color;
 
   /// borderRadius
@@ -56,7 +56,7 @@ class Tag extends StatelessWidget {
             horizontal: 4,
           ),
       decoration: BoxDecoration(
-        color: backgroundColor ?? color?.withOpacity(.25),
+        color: backgroundColor ?? color?.withValues(alpha: .25),
         borderRadius: borderRadius ?? BorderRadius.circular(0),
         border: border,
       ),

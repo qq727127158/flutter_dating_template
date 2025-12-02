@@ -54,9 +54,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         primaryColor: WcaoTheme.primary,
-        backgroundColor: Colors.transparent,
         textTheme: TextTheme(
-          bodyText1: TextStyle(fontSize: WcaoTheme.fsBase),
+          bodyLarge: TextStyle(fontSize: WcaoTheme.fsBase),
         ),
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
@@ -64,8 +63,8 @@ class _MyAppState extends State<MyApp> {
         /// textButton 点击波纹
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
-            textStyle: MaterialStateProperty.all(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            textStyle: WidgetStateProperty.all(
               TextStyle(color: WcaoTheme.primary),
             ),
           ),
@@ -76,15 +75,29 @@ class _MyAppState extends State<MyApp> {
           trackHeight: 12,
           overlayShape: SliderComponentShape.noOverlay,
           activeTrackColor: WcaoTheme.primary,
-          inactiveTrackColor: WcaoTheme.primary.withOpacity(.2),
+          inactiveTrackColor: WcaoTheme.primary.withValues(alpha: .2),
           thumbColor: WcaoTheme.primary,
           valueIndicatorColor: WcaoTheme.primary,
           inactiveTickMarkColor: WcaoTheme.primary,
-        ),
+        ), colorScheme: setColorScheme(),
       ),
       getPages: getRoutes,
       initialRoute: '/home',
       builder: EasyLoading.init(),
+    );
+  }
+
+  ColorScheme setColorScheme() {
+    return ColorScheme(
+      brightness: Brightness.light,
+      primary: Colors.blue,
+      onPrimary: Colors.white,
+      secondary: Colors.teal,
+      onSecondary: Colors.white,
+      error: Colors.red,
+      onError: Colors.white,
+      surface: Colors.grey.shade50,
+      onSurface: Colors.black,
     );
   }
 }

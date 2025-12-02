@@ -90,7 +90,7 @@ class _PageViewCommunityState extends State<PageViewCommunity>
           icon: Icon(
             Icons.email_outlined,
             size: WcaoTheme.fsXl * 1.5,
-            color: WcaoTheme.base.withOpacity(.75),
+            color: WcaoTheme.base.withValues(alpha: .75),
           ),
         )
       ],

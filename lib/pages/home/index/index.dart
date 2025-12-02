@@ -1,11 +1,14 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_dating_template/pages/home/index/search_dialog.dart';
 import 'package:flutter_dating_template/wcao/kit/index.dart';
 import 'package:flutter_dating_template/wcao/ui/theme.dart';
 import 'package:get/get.dart';
 
 import 'dart:math' as math;
+
+import 'example_candidate_model.dart';
+import 'example_card.dart';
 
 class PageViewIndex extends StatefulWidget {
   const PageViewIndex({Key? key}) : super(key: key);
@@ -21,6 +24,10 @@ class _PageViewIndexState extends State<PageViewIndex> {
     WcaoUtils.getRandomImage(),
     WcaoUtils.getRandomImage(),
   ];
+
+  final CardSwiperController controller = CardSwiperController();
+
+  final cards = candidates.map(ExampleCard.new).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -61,144 +68,50 @@ class _PageViewIndexState extends State<PageViewIndex> {
             ),
           ],
         ),
-        Expanded(
-          child: SizedBox(
-            width: double.infinity,
-            child: Swiper(
-              itemCount: swipers.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  padding: const EdgeInsets.only(
-                    top: 0,
-                    left: 12,
-                    right: 12,
-                    bottom: 36,
-                  ),
-                  child: Stack(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 12),
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        width: boxWidth,
-                        child: Opacity(
-                          opacity: .25,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: WcaoUtils.imageCache(swipers[index]),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 24),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Stack(children: [
-                            SizedBox(
-                              width: boxWidth + 24,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: WcaoUtils.imageCache(swipers[index]),
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              left: 0,
-                              width: boxWidth,
-                              child: Container(
-                                color: Colors.black.withOpacity(.15),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 36,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '圆子',
-                                          style: TextStyle(
-                                            fontSize: 28,
-                                            fontWeight: FontWeight.bold,
-                                            color: WcaoTheme.outline,
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              vertical: 4),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.fmd_good,
-                                                color: WcaoTheme.outline,
-                                                size: WcaoTheme.fsBase,
-                                              ),
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                    left: 4),
-                                                child: Text(
-                                                  '1.1km',
-                                                  style: TextStyle(
-                                                    fontSize: WcaoTheme.fsBase,
-                                                    color: WcaoTheme.outline,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                  right: 8),
-                                              child: tag('180m'),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                  right: 8),
-                                              child: tag('射手座'),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                  right: 8),
-                                              child: tag('21岁'),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      width: 64,
-                                      height: 64,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(64),
-                                      ),
-                                      child: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.redAccent,
-                                        size: 48,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ]),
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
+        Flexible(
+          child: CardSwiper(
+            controller: controller,
+            cardsCount: cards.length,
+            onSwipe: _onSwipe,
+            onUndo: _onUndo,
+            numberOfCardsDisplayed: 3,
+            backCardOffset: const Offset(40, 40),
+            padding: const EdgeInsets.all(24.0),
+            cardBuilder: (
+                context,
+                index,
+                horizontalThresholdPercentage,
+                verticalThresholdPercentage,
+                ) =>
+            cards[index],
           ),
-        )
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              // FloatingActionButton(
+              //   onPressed: controller.undo,
+              //   child: const Icon(Icons.rotate_left),
+              // ),
+              FloatingActionButton(
+                onPressed: () => controller.swipe(CardSwiperDirection.left),
+                child: const Icon(Icons.close),
+                backgroundColor: Colors.red,
+                shape: CircleBorder(),
+              ),
+              FloatingActionButton(
+                onPressed: () =>
+                    controller.swipe(CardSwiperDirection.right),
+                child: const Icon(Icons.check),
+                backgroundColor: Colors.green,
+                shape: CircleBorder(),
+                // foregroundColor: Colors.white,
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -238,7 +151,7 @@ class _PageViewIndexState extends State<PageViewIndex> {
         vertical: 2,
         horizontal: 4,
       ),
-      color: Colors.black.withOpacity(.46),
+      color: Colors.black.withValues(alpha: .46),
       child: Text(
         str,
         style: TextStyle(
@@ -260,5 +173,27 @@ class _PageViewIndexState extends State<PageViewIndex> {
         backgroundImage: NetworkImage(WcaoUtils.getRandomImage()),
       ),
     );
+  }
+
+  bool _onSwipe(
+      int previousIndex,
+      int? currentIndex,
+      CardSwiperDirection direction,
+      ) {
+    debugPrint(
+      'The card $previousIndex was swiped to the ${direction.name}. Now the card $currentIndex is on top',
+    );
+    return true;
+  }
+
+  bool _onUndo(
+      int? previousIndex,
+      int currentIndex,
+      CardSwiperDirection direction,
+      ) {
+    debugPrint(
+      'The card $currentIndex was undod from the ${direction.name}',
+    );
+    return true;
   }
 }

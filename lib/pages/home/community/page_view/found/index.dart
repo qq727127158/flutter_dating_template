@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dating_template/pages/home/community/page_view/like/mock.dart';
 import 'package:flutter_dating_template/wcao/kit/index.dart';
 import 'package:flutter_dating_template/wcao/ui/theme.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 /// HACK: 社区-发现
 class PageViewFound extends StatefulWidget {

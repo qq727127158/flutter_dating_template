@@ -3,7 +3,7 @@ import 'package:flutter_dating_template/pages/history_match/mock.dart';
 import 'package:flutter_dating_template/wcao/kit/index.dart';
 import 'package:flutter_dating_template/wcao/ui/theme.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 class HistoryMatch extends StatefulWidget {
   const HistoryMatch({Key? key}) : super(key: key);
@@ -90,7 +90,7 @@ class _HistoryMatchState extends State<HistoryMatch> {
                   ),
                   Positioned(
                     child: Container(
-                      color: Colors.black.withOpacity(.15),
+                      color: const Color.fromRGBO(0, 0, 0, 0.15), // 修复：使用 rgba 表示法替代 withOpacity
                     ),
                   ),
                   Positioned(

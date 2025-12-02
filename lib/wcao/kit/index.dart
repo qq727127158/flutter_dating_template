@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_dating_template/wcao/ui/theme.dart';
 
-const assetHost = 'https://rao.pics/r';
+const assetHost = 'https://www.dmoe.cc/random.php';
 
 class WcaoUtils {
   /// toast

@@ -4,18 +4,21 @@ import 'package:flutter_dating_template/pages/home/message/firends_dialog.dart';
 import 'package:flutter_dating_template/pages/home/message/qr_scan.dart';
 import 'package:flutter_dating_template/wcao/ui/theme.dart';
 import 'package:get/get.dart';
-import 'package:scan/scan.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:wukongimfluttersdk/wkim.dart';
 
 class PageViewMessage extends StatefulWidget {
   const PageViewMessage({Key? key}) : super(key: key);
+  //WKIM.shared.setup(Options.newDefault('uid', 'token'));
 
   @override
   State<PageViewMessage> createState() => _PageViewMessageState();
 }
 
 class _PageViewMessageState extends State<PageViewMessage> {
+
   List<MockLike> lists = [];
-  ScanController controller = ScanController();
+  MobileScannerController controller = MobileScannerController();
 
   @override
   void initState() {
@@ -136,7 +139,7 @@ class _PageViewMessageState extends State<PageViewMessage> {
                 border: Border(
                   bottom: BorderSide(
                     width: .5,
-                    color: WcaoTheme.placeholder.withOpacity(.5),
+                    color: WcaoTheme.placeholder.withValues(alpha: .5),
                   ),
                 ),
               ),

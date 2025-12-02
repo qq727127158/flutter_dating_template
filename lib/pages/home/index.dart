@@ -50,13 +50,16 @@ class _HomeState extends State<Home> {
           PageViewMine(),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: WcaoTheme.primary,
-        onPressed: () {
-          Get.toNamed('/publish');
-        },
-        child: const Icon(
-          Icons.add,
+      floatingActionButton: Transform.translate(
+        offset: const Offset(0, 20), // 垂直向下偏移20像素
+        child: FloatingActionButton(
+          backgroundColor: WcaoTheme.primary,
+          onPressed: () {
+            Get.toNamed('/publish');
+          },
+          child: const Icon(
+            Icons.add,
+          ),
         ),
       ),
       resizeToAvoidBottomInset: true,

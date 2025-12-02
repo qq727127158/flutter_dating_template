@@ -88,7 +88,7 @@ class _PublishState extends State<Publish> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 2),
                         decoration: BoxDecoration(
-                          color: WcaoTheme.placeholder.withOpacity(.25),
+                          color: WcaoTheme.placeholder.withValues(alpha: 0.25),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
@@ -107,7 +107,7 @@ class _PublishState extends State<Publish> {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      width: .5, color: WcaoTheme.placeholder.withOpacity(.5)),
+                      width: .5, color: WcaoTheme.placeholder.withValues(alpha: 0.5)),
                 ),
               ),
               child: Row(
@@ -161,7 +161,7 @@ class _PublishState extends State<Publish> {
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8),
                     bottomRight: Radius.circular(8)),
-                color: WcaoTheme.base.withOpacity(.5),
+                color: WcaoTheme.base.withValues(alpha: 0.5),
               ),
               alignment: Alignment.center,
               child: const Text(

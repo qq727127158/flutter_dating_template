@@ -155,12 +155,12 @@ class _SearchDialogState extends State<SearchDialog> {
       runSpacing: 0,
       spacing: 12,
       borderRadius: BorderRadius.circular(6),
-      unselectedColor: WcaoTheme.outline.withOpacity(.25),
-      selectedColor: WcaoTheme.primary.withOpacity(.2),
+      unselectedColor: WcaoTheme.outline.withValues(alpha: .25),
+      selectedColor: WcaoTheme.primary.withValues(alpha: .2),
       unselectedBorderColor: WcaoTheme.outline,
       selectedBorderColor: WcaoTheme.primary,
       unselectedTextStyle: TextStyle(
-        color: WcaoTheme.base.withOpacity(.85),
+        color: WcaoTheme.base.withValues(alpha: .85),
         fontSize: WcaoTheme.fsSm,
       ),
       selectedTextStyle: TextStyle(

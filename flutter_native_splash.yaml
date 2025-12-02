@@ -32,7 +32,7 @@ flutter_native_splash:
   # The color_dark, background_image_dark, image_dark, branding_dark are parameters that set the background
   # and image when the device is in dark mode. If they are not specified, the app will use the
   # parameters from above. If the image_dark parameter is specified, color_dark or
-  # background_image_dark must be specified.  color_dark and background_image_dark cannot both be
+  # background_image_dark must be specified.  color_dark and backgrdart run flutter_native_splash:create --path=path/to/my/file.yamlound_image_dark cannot both be
   # set.
   color_dark: "#042a49"
   #background_image_dark: "assets/dark-background.png"

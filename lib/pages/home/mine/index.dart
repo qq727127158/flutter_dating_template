@@ -80,7 +80,7 @@ class _PageViewMineState extends State<PageViewMine> {
                       ),
                       Positioned(
                         child: Container(
-                          color: Colors.black.withOpacity(.33),
+                          color: Colors.black.withValues(alpha: .33),
                         ),
                       ),
                       Positioned(
@@ -307,7 +307,7 @@ class _PageViewMineState extends State<PageViewMine> {
                         '+',
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24, vertical: 4),
-                        backgroundColor: Colors.black.withOpacity(.4),
+                        backgroundColor: Colors.black.withValues(alpha: .4),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(24),
                         fontSize: WcaoTheme.fsBase,
@@ -319,7 +319,7 @@ class _PageViewMineState extends State<PageViewMine> {
                       mine.tags[index],
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 4),
-                      backgroundColor: Colors.black.withOpacity(.4),
+                      backgroundColor: Colors.black.withValues(alpha: .4),
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(24),
                       fontSize: WcaoTheme.fsBase,

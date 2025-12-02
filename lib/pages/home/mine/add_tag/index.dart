@@ -36,7 +36,7 @@ class _MineAddTagState extends State<MineAddTag> {
                 width: double.infinity,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                color: WcaoTheme.primary.withOpacity(.25),
+                color: WcaoTheme.primary.withValues(alpha: .25),
                 child: Wrap(
                   alignment: WrapAlignment.start,
                   spacing: 12,
